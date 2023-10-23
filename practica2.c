@@ -1,10 +1,10 @@
-# Oriol Vilà i Laia Espluga
-void InitData(){   # Tots iniciem el programa amb el mateix codi per comprobar que els resultats són correctes
+// Oriol Vilà i Laia Espluga
+void InitData(){   // Tots iniciem el programa amb el mateix codi per comprobar que els resultats són correctes
 int i,j;
-srand(8824553);   # La funció srand genera números pseudo-aleatoris que seguiran la mateix seqüència durant tot el programa 
+srand(8824553);   // La funció srand genera números pseudo-aleatoris que seguiran la mateix seqüència durant tot el programa 
 for( i = 0; i < N; i++ )
   for( j = 0; j < N; j++ ){
-  Mat[i][j]=(((i*j)%3)?-1:1)*(100.0*(rand()/(1.0*RAND_MAX)));    # La funció rand genera números aleatoris
+  Mat[i][j]=(((i*j)%3)?-1:1)*(100.0*(rand()/(1.0*RAND_MAX)));    // La funció rand genera números aleatoris
     if ( (abs(i - j) <= 3) && (i != j))
       MatDD[i][j] = (((i*j)%3) ? -1 : 1)*(rand()/(1.0*RAND_MAX));
     else if ( i == j )
