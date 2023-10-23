@@ -1,4 +1,8 @@
 // Oriol Vilà i Laia Espluga
+
+#include <stdio.h>
+#define N 100
+
 void InitData(){   // Tots iniciem el programa amb el mateix codi per comprobar que els resultats són correctes
 int i,j;
 srand(8824553);   // La funció srand genera números pseudo-aleatoris que seguiran la mateix seqüència durant tot el programa 
@@ -18,10 +22,6 @@ for( i = 0; i < N; i++ ){
   V3[i]=(((i*j)%5)?-1:1)*(100.0*(rand()/(1.0*RAND_MAX)));
 }
 }
-
-#include <stdio.h>
-
-#define N 100
 
 void PrintVect(float vect[N], int from, int numel) {
     // Comprovar que els paràmetres son vàlids
