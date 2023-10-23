@@ -66,3 +66,48 @@ int main() {
 
     return 0;
 }
+
+
+
+void PrintRow(float mat[N][N], int row, int from, int numel) {
+    // Comprobar que los parámetros son válidos
+    if (row < 0 || row >= N || from < 0 || from >= N || numel < 0 || from + numel > N) {
+        printf("Parámetros no válidos\n");
+        return;
+    }
+
+    // Imprimir los elementos de la fila de la matriz
+    printf("Elementos de la fila %d a partir de la posición %d:\n", row, from);
+    for (int i = from; i < from + numel; i++) {
+        printf("%f ", mat[row][i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    InitData();
+
+    float Mat[N][N];  // Definir la matriz
+    int row, numel, from;
+
+    // Inicializar la matriz con datos, por ejemplo, llena con valores consecutivos para demostración
+    for (int i = 0; i < N; i++) {
+        for (int j = 0; j < N; j++) {
+            Mat[i][j] = (float)(i * N + j);
+        }
+    }
+
+    // Solicitar al usuario la fila, la posición inicial y el número de elementos a imprimir
+    printf("Introduce el número de fila: ");
+    scanf("%d", &row);
+    printf("Introduce la posición inicial (from): ");
+    scanf("%d", &from);
+    printf("Introduce el número de elementos a imprimir (numel): ");
+    scanf("%d", &numel);
+
+    // Llamar a la función para imprimir los elementos de la fila de la matriz
+    PrintRow(Mat, row, from, numel);
+
+    return 0;
+}
+
