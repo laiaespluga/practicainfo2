@@ -6,7 +6,7 @@
 #define N 512
 
 float V1[N], V2[N], V3[N], V4[N];
-float Mat, MatDD[N][N];
+float Mat[N][N], MatDD[N][N];
 
 
 void InitData(){   // Tots iniciem el programa amb el mateix codi per comprobar que els resultats són correctes
