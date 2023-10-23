@@ -63,7 +63,7 @@ int main() {
     InitData();
   
     float vector[N];  // Definir el vector
-    int numel, from;
+    int numel, from, row;
 
     // Omplir el vector
     for (int i = 0; i < N; i++) {
