@@ -1,7 +1,13 @@
 // Oriol Vilà i Laia Espluga
-
+#include <stdlib.h>
 #include <stdio.h>
-#define N 100
+#include <math.h>
+
+#define N 512
+
+float V1[N], V2[N], V3[N], V4[N];
+float Mat, MatDD[N][N];
+
 
 void InitData(){   // Tots iniciem el programa amb el mateix codi per comprobar que els resultats són correctes
 int i,j;
@@ -39,6 +45,8 @@ void PrintVect(float vect[N], int from, int numel) {
 }
 
 int main() {
+    InitData();
+  
     float vector[N];  // Definir el vector
     int numel, from;
 
