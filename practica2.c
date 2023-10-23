@@ -24,14 +24,14 @@ for( i = 0; i < N; i++ ){
 #define N 100
 
 void PrintVect(float vect[N], int from, int numel) {
-    // Comprobar si los parámetros son válidos
+    // Comprovar que els paràmetres son vàlids
     if (from < 0 || from >= N || numel < 0 || from + numel > N) {
-        printf("Parámetros no válidos\n");
+        printf("Paràmetres no vàlids\n");
         return;
     }
 
     // Imprimir los elementos del vector
-    printf("Elementos del vector a partir de la posición %d:\n", from);
+    printf("Elements del vector a partir de la pocisió %d:\n", from);
     for (int i = from; i < from + numel; i++) {
         printf("%f ", vect[i]);
     }
@@ -42,18 +42,18 @@ int main() {
     float vector[N];  // Definir el vector
     int numel, from;
 
-    // Llenar el vector con valores de ejemplo (esto puede variar según tus necesidades)
+    // Omplir el vector
     for (int i = 0; i < N; i++) {
         vector[i] = (float)i;
     }
 
-    // Solicitar al usuario la posición inicial y el número de elementos a imprimir
-    printf("Introduce la posición inicial (from): ");
+    // Demanar a l'usuari la posició inicial i el nombre d'elements a mostrar
+    printf("Introdueix la posició inicial (from): ");
     scanf("%d", &from);
-    printf("Introduce el número de elementos a imprimir (numel): ");
+    printf("Introdueix el nombre d'elements a mostrar (numel): ");
     scanf("%d", &numel);
 
-    // Llamar a la función para imprimir los elementos del vector
+    // Crida la funció per impirimir els elements del vector
     PrintVect(vector, from, numel);
 
     return 0;
