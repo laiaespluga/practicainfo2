@@ -47,7 +47,7 @@ void PrintVect(float vect[N], int from, int numel) { //Treballem amb 3 arguments
 // EXERCICI 2: Imprimim un cert nombre d'elements d'una fila d'una matriu
 void PrintRow(float mat[N][N], int row, int from, int numel) { //Treballem amb 4 arguments: la matriu, la fila a imprimir i dos números enters que indiquen el primer i últim element que volem imprimir
 
-  if (row < 0 || row >= N || from < 0 || from >= N || numel < 0 ) { // Comprobar que los parámetros son válidos
+  if (row < 0 || row >= N || from < 0 || from >= N || numel < 0 ) { // Comprobar que els paràmetres són vàlids
         printf("Paràmetres no vàlids\n"); //Si la condició no es compleix imprimeix l'error
         return;
     }
@@ -146,46 +146,47 @@ float NormFrobenius(float Mat[N][N]) { //Declarem al funció a partir de la matr
 
 //EXERCICI 11: Determinar si una matriu és o no Diagonal Dominant (Una matriu és diagonal dominant si el valor absolut de l’element de la diagonal és més gran o igual que la suma dels valors absoluts dels altres elements de la fila, per a totes les files de la matriu)
 int DiagonalDom(float Mat[N][N]) { //Declarem al funció a partir de la matriu. 
-    for (int i = 0; i < N; i++) {
-        float diagonal = fabs(Mat[i][i]);
-        float sum = 0;
-        for (int j = 0; j < N; j++) {
-            if (j != i) {
-                sum += fabs(Mat[i][j]);
+    for (int i = 0; i < N; i++) { //El bucle for recorre les files de la matriu
+        float diagonal = fabs(Mat[i][i]); //Obté el valor absolut de l'element de la diagonal actual.
+        float sum = 0; //Inicialitza la suma dels valors absoluts dels elements fora de la diagonal per a aquesta fila
+        for (int j = 0; j < N; j++) { //Recorrem cada element dins de la fila actual.
+            if (j != i) { //Exclou l'element de la diagonal per evitar sumar-lo a la suma.
+                sum += fabs(Mat[i][j]); //Afegeix el valor absolut de l'element actual a la suma
             }
         }
-        if (diagonal < sum) {
-            return 0;
+        if (diagonal < sum) { //Compara el valor absolut de l'element de la diagonal amb la suma calculada
+            return 0; //Si la matriu no és diagonal dominant la funció retorna 0 (fals)
         }
     }
-    return 1;
+    return 1; //Si la matriu és diagonal dominant la funció retorna 0 (veritat)
 }
 
 //EXERCICI 12: Resoldre sistemes d'equacions lineals a partir del mètode Jacobi 
-int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned int iter ){
-    if (!DiagonalDom(M)) {
+int Jacobi( float M[N][N] , float vect[N], float vectres[N], unsigned int iter ){ //Declarem la funció a partir de la matriu (M), el vector (vect), el vector on emmagatzemarem el resultat (vectres) i un número no negatiu que representa el número d’iteracions que es realitzaran en el mètode Jacobi.
+    if (!DiagonalDom(M)) { //Si la matriu no és diagonal dominant, la funció retorna 0 
     printf("La matriu M no és diagonal dominant, no es pot aplicar Jacobi\n");
     return 0;
             }
-    float temp[N];
-    unsigned int k;
-    for (k=0; k< iter;k++){
+    float temp[N]; //Es declara una variable temporal “temp” per emmagatzemar les iteracions successives
+    unsigned int k; //S'inicialitza el bucle de iteracions
+    for (k=0; k< iter;k++){ //Per cada iteració: 
       for (int i = 0; i < N; i++) {
-        temp[i]=vect[i];
+        temp[i]=vect[i]; //Es copien els valors actuals de “vectres” (la solució provisional) a ”temp”
 
-        for (int j=0; j<N; j++){
+        for (int j=0; j<N; j++){ //S'itera sobre cada fila de la matriu M per calcular els nous valors de “temp” basant-se en la solució provisional “vectres”
               if (j!=i){
             temp[i]-=M[i][j]*vectres[j];
               }
     
         }
-        temp[i] /=M[i][i];
+        temp[i] /=M[i][i]; //Es divideix cada element calculat de “temp” pel valor corresponent a la diagonal principal de M
       }
       for (int i=0; i<N; i++){
-        vectres[i]=temp[i];
+        vectres[i]=temp[i]; //Finalment, es copien els nous valors de “temp” a “vectres” per a la propera iteració.
+
       }
     }
-    return 1;
+    return 1; //La funció retorna 1 per indicar que les iteracions han estat realitzades amb èxit i que “vectres” conté una aproximació a la solució del sistema d'equacions lineals
 }
 
     
